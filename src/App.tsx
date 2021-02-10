@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Admin, Resource } from 'react-admin';
+import { Admin, Resource, EditGuesser, ShowGuesser } from 'react-admin';
 import buildHasuraProvider from 'ra-data-hasura';
 import {
-  TodosList,
-  TodosCreate,
-  TodosEdit,
-  TodosIcon,
-} from './resources/todos';
-import { UsersList, UsersShow, UsersIcon } from './resources/users';
+  PageSettingsList,
+  PageSettingsCreate,
+  PageSettingsEdit,
+  PageSettingsIcon,
+} from './resources/page-settings';
+import {
+  CurvesSettingsList,
+  CurvesSettingsCreate,
+  CurvesSettingsEdit,
+  CurvesSettingsIcon,
+} from './resources/curves-settings';
+import {
+  UsersList,
+  UsersShow,
+  UsersIcon,
+  UsersCreate,
+} from './resources/users';
 import customBuildFields from './custom-build-fields';
 
-const GRAPHQL_URI = 'https://low-code-api.herokuapp.com/v1/graphql';
+const GRAPHQL_URI = 'https://expert-pigeon-28.hasura.app/v1/graphql';
 
 const clientOptions = { uri: GRAPHQL_URI };
 
@@ -32,17 +43,27 @@ function App() {
   return (
     <Admin dataProvider={dataProvider}>
       <Resource
-        name="todos"
-        icon={TodosIcon}
-        list={TodosList}
-        create={TodosCreate}
-        edit={TodosEdit}
+        name="page_settings"
+        icon={PageSettingsIcon}
+        list={PageSettingsList}
+        create={PageSettingsCreate}
+        edit={PageSettingsEdit}
       />
       <Resource
-        name="users"
+        name="user_profile"
         icon={UsersIcon}
+        create={UsersCreate}
         list={UsersList}
         show={UsersShow}
+        edit={EditGuesser}
+      />
+      <Resource
+        name="curves_preferences"
+        icon={CurvesSettingsIcon}
+        list={CurvesSettingsList}
+        create={CurvesSettingsCreate}
+        show={ShowGuesser}
+        edit={CurvesSettingsEdit}
       />
     </Admin>
   );

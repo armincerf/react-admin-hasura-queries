@@ -3,7 +3,7 @@ import { GET_LIST } from 'react-admin';
 import { ResourceType, FetchType } from 'ra-data-hasura';
 
 import { GET_LIST_USERS } from './queries/users';
-import { GET_LIST_TODOS } from './queries/todos';
+import { GET_LIST_PAGESETTINGS } from './queries/pagesettings';
 
 /**
  * Extracts just the fields from a GraphQL AST.
@@ -17,8 +17,8 @@ const CUSTOM_QUERIES: any = {
   users: {
     [GET_LIST]: GET_LIST_USERS,
   },
-  todos: {
-    [GET_LIST]: GET_LIST_TODOS,
+  PageSettings: {
+    [GET_LIST]: GET_LIST_PAGESETTINGS,
   },
 };
 

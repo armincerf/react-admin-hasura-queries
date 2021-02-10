@@ -1,5 +1,5 @@
 {
-  "name": "low-code-react-admin",
+  "name": "artis-admin",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,6 +21,7 @@
     "ra-data-hasura": "^0.1.0",
     "react": "^16.13.1",
     "react-admin": "^3.6.0",
+    "react-admin-json-view": "^1.1.0",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
