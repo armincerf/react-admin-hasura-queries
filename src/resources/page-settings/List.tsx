@@ -13,7 +13,7 @@ import {
 
 const PageSettingFilter = (props: object) => (
   <Filter {...props}>
-    <ReferenceInput label="User" source="user_id" reference="user_profile">
+    <ReferenceInput label="User" source="user_id" reference="users">
       <SelectInput optionText="email" />
     </ReferenceInput>
   </Filter>
@@ -33,7 +33,7 @@ const PageSettingList = (props: object) => (
           displayDataTypes: false,
         }}
       />
-      <ReferenceField source="user_id" reference="user_profile">
+      <ReferenceField source="user_id" reference="users">
         <TextField source="email" />
       </ReferenceField>
       <EditButton />

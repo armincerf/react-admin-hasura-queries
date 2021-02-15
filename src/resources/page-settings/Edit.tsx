@@ -34,7 +34,7 @@ export const PageSettingsEdit = (props: object) => (
   >
     <SimpleForm>
       <TextInput disabled source="id" label="PageSetting Id" />
-      <ReferenceInput label="User" source="user_id" reference="user_profile">
+      <ReferenceInput label="User" source="user_id" reference="users">
         <SelectInput optionText="email" />
       </ReferenceInput>
       <JsonInput

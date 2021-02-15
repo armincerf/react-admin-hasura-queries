@@ -12,7 +12,7 @@ import {
 
 const CurvesSettingFilter = (props: object) => (
   <Filter {...props}>
-    <ReferenceInput label="User" source="user_id" reference="user_profile">
+    <ReferenceInput label="User" source="user_id" reference="users">
       <SelectInput optionText="email" />
     </ReferenceInput>
   </Filter>
@@ -21,7 +21,7 @@ const CurvesSettingFilter = (props: object) => (
 const CurvesSettingList = (props: object) => (
   <List filters={<CurvesSettingFilter />} {...props}>
     <Datagrid>
-      <ReferenceField source="user_id" reference="user_profile">
+      <ReferenceField source="user_id" reference="users">
         <TextField source="email" />
       </ReferenceField>
       <TextField source="global_selector_range" />

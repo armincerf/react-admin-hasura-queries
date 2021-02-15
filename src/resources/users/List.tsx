@@ -18,9 +18,12 @@ export const UsersList = (props: object) => (
   <List filters={<UserFilter />} {...props}>
     <Datagrid rowClick="show">
       <TextField source="id" />
-      <TextField source="first_name" />
-      <TextField source="last_name" />
+
+      <TextField source="firstname" />
+      <TextField source="lastname" />
       <TextField source="email" />
+      <TextField source="organisation" />
+
       <EditButton />
     </Datagrid>
   </List>

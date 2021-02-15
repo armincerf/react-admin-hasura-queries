@@ -10,7 +10,7 @@ import {
 export const PageSettingsCreate = (props: object) => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="user_id" reference="user_profile">
+      <ReferenceInput source="user_id" reference="users">
         <SelectInput optionText="email" />
       </ReferenceInput>
       <TextInput source="settings_blob" />

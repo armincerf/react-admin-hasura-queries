@@ -6,6 +6,5 @@ export const GET_LIST_USERS = gql`
     id
     firstname
     email
-    organisation
   }
 `;

@@ -33,7 +33,7 @@ export const CurvesSettingsEdit = (props: object) => (
   >
     <SimpleForm>
       <TextInput disabled source="id" label="CurvesSetting Id" />
-      <ReferenceInput label="User" source="user_id" reference="user_profile">
+      <ReferenceInput label="User" source="user_id" reference="users">
         <SelectInput optionText="email" />
       </ReferenceInput>
       <TextInput source="global_selector_range" label="Total Months (count)" />

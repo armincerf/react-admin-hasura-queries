@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Admin, Resource, EditGuesser, ShowGuesser } from 'react-admin';
+import {
+  Admin,
+  Resource,
+  EditGuesser,
+  ShowGuesser,
+  ListGuesser,
+} from 'react-admin';
 import buildHasuraProvider from 'ra-data-hasura';
 import {
   PageSettingsList,
@@ -19,6 +25,7 @@ import {
   UsersIcon,
   UsersCreate,
 } from './resources/users';
+import { ProductsList, ProductsEdit } from './resources/products';
 import customBuildFields from './custom-build-fields';
 
 const GRAPHQL_URI = 'https://expert-pigeon-28.hasura.app/v1/graphql';
@@ -50,7 +57,7 @@ function App() {
         edit={PageSettingsEdit}
       />
       <Resource
-        name="user_profile"
+        name="users"
         icon={UsersIcon}
         create={UsersCreate}
         list={UsersList}
@@ -65,6 +72,9 @@ function App() {
         show={ShowGuesser}
         edit={CurvesSettingsEdit}
       />
+      <Resource name="packages" list={ListGuesser} />
+      <Resource name="organisations" list={ListGuesser} />
+      <Resource name="product" list={ProductsList} edit={ProductsEdit} />
     </Admin>
   );
 }
