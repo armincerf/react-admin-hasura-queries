@@ -25,10 +25,16 @@ import {
   UsersIcon,
   UsersCreate,
 } from './resources/users';
+import {
+  RecentBroadcastList,
+  RecentBroadcastShow,
+  RecentBroadcastIcon,
+  RecentBroadcastCreate,
+} from './resources/recent-broadcasts';
 import { ProductsList, ProductsEdit } from './resources/products';
 import customBuildFields from './custom-build-fields';
 
-const GRAPHQL_URI = 'https://expert-pigeon-28.hasura.app/v1/graphql';
+const GRAPHQL_URI = 'https://artis-demo.hasura.app/v1/graphql';
 
 const clientOptions = { uri: GRAPHQL_URI };
 
@@ -74,6 +80,7 @@ function App() {
       />
       <Resource name="packages" list={ListGuesser} />
       <Resource name="organisations" list={ListGuesser} />
+      <Resource name="recent_broadcasts" list={RecentBroadcastList} />
       <Resource name="product" list={ProductsList} edit={ProductsEdit} />
     </Admin>
   );
