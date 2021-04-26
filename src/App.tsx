@@ -14,37 +14,33 @@ import {
   PageSettingsIcon,
 } from './resources/page-settings';
 import {
-  CurvesSettingsList,
-  CurvesSettingsCreate,
-  CurvesSettingsEdit,
-  CurvesSettingsIcon,
-} from './resources/curves-settings';
-import {
   UsersList,
   UsersShow,
   UsersIcon,
   UsersCreate,
 } from './resources/users';
-import {
-  RecentBroadcastList,
-  RecentBroadcastShow,
-  RecentBroadcastIcon,
-  RecentBroadcastCreate,
-} from './resources/recent-broadcasts';
 import { ProductsList, ProductsEdit } from './resources/products';
 import customBuildFields from './custom-build-fields';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const GRAPHQL_URI = 'https://artis-demo.hasura.app/v1/graphql';
+const GRAPHQL_URI = 'https://uat.hasura.app/v1/graphql';
 
-const clientOptions = { uri: GRAPHQL_URI };
+const myClient = new ApolloClient({
+  uri: GRAPHQL_URI,
+  cache: new InMemoryCache(),
+  headers: {
+    'x-hasura-admin-secret':
+      'FA1juqc50AwczO6ScxdwrP7DJhZ1q4SAKhhzxI72yxvWoHQtAxdZOnr4t29SaXv5',
+    // 'Authorization': `Bearer xxxx`,
+  },
+});
 
 function App() {
   const [dataProvider, setDataProvider] = useState<null | Function>(null);
-
   useEffect(() => {
     const buildDataProvider = async () => {
       const dataProvider = await buildHasuraProvider(
-        { clientOptions },
+        { client: myClient },
         { buildFields: customBuildFields }
       );
       setDataProvider(() => dataProvider);
@@ -63,7 +59,7 @@ function App() {
         edit={PageSettingsEdit}
       />
       <Resource
-        name="users"
+        name="folio_user"
         icon={UsersIcon}
         create={UsersCreate}
         list={UsersList}
@@ -71,16 +67,86 @@ function App() {
         edit={EditGuesser}
       />
       <Resource
-        name="curves_preferences"
-        icon={CurvesSettingsIcon}
-        list={CurvesSettingsList}
-        create={CurvesSettingsCreate}
+        name="package"
+        list={ListGuesser}
+        edit={EditGuesser}
         show={ShowGuesser}
-        edit={CurvesSettingsEdit}
       />
-      <Resource name="packages" list={ListGuesser} />
-      <Resource name="organisations" list={ListGuesser} />
-      <Resource name="recent_broadcasts" list={RecentBroadcastList} />
+      <Resource
+        name="geographical_region"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+        create={EditGuesser}
+      />
+      <Resource
+        name="permission"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="product_overrides"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="product_config"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="product_eod"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="eod"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="exchange"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="eod_entry"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="commodity_group"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="commodity_parent_group"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource
+        name="packages"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+      <Resource name="organisation" list={ListGuesser} />
+      <Resource
+        name="source"
+        list={ListGuesser}
+        edit={EditGuesser}
+        show={ShowGuesser}
+      />
+
       <Resource name="product" list={ProductsList} edit={ProductsEdit} />
     </Admin>
   );
